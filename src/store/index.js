@@ -5,11 +5,16 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    addressInfo: {
-      endLat: '39.94055',
-      endLng: '116.43207',
-      endName: '来福士购物中心'
-    }
+    // 首页标签颜色
+    labelColor: {
+      firstMealC: '#ffa39c',
+      secondMealC: '#8ad773',
+      ratioC: '#ff9900',
+      discountC: '#ff4040',
+      labelC: '#92d5f5'
+    },
+    //
+    addressInfo: {}
   },
   getters: {},
   mutations: {},

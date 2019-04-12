@@ -1,42 +1,41 @@
 <template>
-  <map-route :route-info="routeInfo"></map-route>
+  <div class="map-box">
+    <!-- 地图 -->
+    <map id="map" v-if="toggleBtn.name=='列表'" :longitude="myPosition.longitude" :latitude="myPosition.latitude" scale="13"
+      :controls="controls" :markers="markers" :callout="callout" @callouttap="callouttap" bindcontroltap="controltap"
+      @markertap="markertap" bindregionchange="regionchange" show-location>
+      <cover-view class="map-footer">
+        <cover-view class="item" @tap="changeToggleBtnName">{{toggleBtn.name}}</cover-view>
+        <cover-view class="item" @tap="toSearch">搜索</cover-view>
+      </cover-view>
+    </map>
+    <!-- 列表 -->
+    <div v-else>
+      <ul class="site-ul">
+        <li class="site-li" v-for="(item,index) in siteList" :key="index" @click="toIndex(item)">
+          <h6 class="site-name">
+            <span>
+              {{item.siteName}}
+            </span>
+            <span class="distance">
+              {{item.mansion.distance}}
+            </span>
+          </h6>
+          <p class="site-p">
+            {{item.mansion.mansionSite}}
+          </p>
+        </li>
+      </ul>
+      <cover-view class="map-footer">
+        <cover-view class="item" @tap="changeToggleBtnName">{{toggleBtn.name}}</cover-view>
+        <cover-view class="item" @tap="toSearch">搜索</cover-view>
+      </cover-view>
+    </div>
+  </div>
 </template>
 
-<script>
-import store from '@/store'
+<script src="./index.js"></script>
 
-// let plugin = requirePlugin('mapPlugin')
-
-export default {
-  store,
-  data () {
-    return {
-      routeInfo: {}
-    }
-  },
-
-  components: {
-  },
-  onShow () {
-    let mapInfo = this.$store.state.addressInfo
-    let routeInfo = {
-      startLat: 39.90469, // 起点纬度 选填
-      startLng: 116.40717, // 起点经度 选填
-      startName: '我的位置', // 起点名称 选填
-      endLat: mapInfo.endLat, // 终点纬度必传
-      endLng: mapInfo.endLng, // 终点经度 必传
-      endName: mapInfo.endName || '', // 终点名称 必传
-      mode: 'car' // 算路方式 选填
-    }
-    this.routeInfo = routeInfo
-  },
-  methods: {
-  },
-  created () {
-  }
-}
-</script>
-
-<style scoped>
-
+<style scoped lang="scss">
+  @import './index.scss'
 </style>

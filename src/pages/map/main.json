@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "地图导航",
-  "usingComponents": {
-      "map-route": "plugin://mapPlugin/mapRoute"
-  }
+  "navigationBarTitleText": "点位地图"
 }

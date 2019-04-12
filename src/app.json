@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/map/main",
     "pages/index/main",
-    "pages/logs/main",
-    "pages/counter/main"
+    "pages/map/main",
+    "pages/cart/main",
+    "pages/order/main",
+    "pages/mine/main",
+    "pages/goodsDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,37 +15,36 @@
   },
   "tabBar": {
     "color": "#999",
-    "backgroundColor": "#fafafa",
-    "selectedColor": "#333",
-    "borderStyle": "white",
+    "backgroundColor": "#f9f9f9",
+    "selectedColor": "#ff6900",
+    "borderStyle": "black",
 
     "list": [{
-      "text": "地图",
-      "pagePath": "pages/map/main",
-      "iconPath": "static/tabs/home.png",
-      "selectedIconPath": "static/tabs/home-active.png"
-    },{
-      "text": "首页",
+      "text": "订餐",
       "pagePath": "pages/index/main",
       "iconPath": "static/tabs/home.png",
-      "selectedIconPath": "static/tabs/home-active.png"
+      "selectedIconPath": "static/tabs/homeActive.png"
+    }, {
+      "text": "购物车",
+      "pagePath": "pages/cart/main",
+      "iconPath": "static/tabs/cart.png",
+      "selectedIconPath": "static/tabs/cartActive.png"
     }, {
       "text": "订单",
-      "pagePath": "pages/logs/main",
-      "iconPath": "static/tabs/orders.png",
-      "selectedIconPath": "static/tabs/orders-active.png"
+      "pagePath": "pages/order/main",
+      "iconPath": "static/tabs/order.png",
+      "selectedIconPath": "static/tabs/orderActive.png"
+    }, {
+      "text": "我的",
+      "pagePath": "pages/mine/main",
+      "iconPath": "static/tabs/mine.png",
+      "selectedIconPath": "static/tabs/mineActive.png"
     }],
     
     "position": "bottom"
   },
-  "plugins": {
-    "mapPlugin": {
-      "version": "1.0.6",
-      "provider": "wx5bc2ac602a747594"
-    }
-  },
-  "permission":{
-    "scope.userLocation":{
+  "permission": {
+    "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   }

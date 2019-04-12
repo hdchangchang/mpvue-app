@@ -1,9 +1,9 @@
-function formatNumber (n) {
+export const formatNumber = function(n) {
   const str = n.toString()
   return str[1] ? str : `0${str}`
 }
 
-export function formatTime (date) {
+export const formatTime = function(date) {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -18,7 +18,23 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
-export default {
-  formatNumber,
-  formatTime
+export const linkTo = function(url) {
+  const switchList = ['/pages/index/main', '/pages/cart/main', '/pages/order/main', '/pages/mine/main']
+  const isSwitch = switchList.some((itm) => {
+    return itm == url
+  })
+  console.log(isSwitch)
+  if (mpvuePlatform === 'wx' && isSwitch) {
+    mpvue.switchTab({ url })
+  } else {
+    mpvue.navigateTo({ url })
+  }
+}
+
+export const getQuery = function() {
+  /* 获取当前路由栈数组 */
+  const pages = getCurrentPages() // mpvue 是否实现？还是只是小程序方法？
+  const currentPage = pages[pages.length - 1]
+  const options = currentPage.options
+  return options
 }

@@ -1,50 +1,110 @@
 <script>
-export default {
-  created () {
-    // 调用API从本地缓存中获取数据
-    /*
-     * 平台 api 差异的处理方式:  api 方法统一挂载到 mpvue 名称空间, 平台判断通过 mpvuePlatform 特征字符串
-     * 微信：mpvue === wx, mpvuePlatform === 'wx'
-     * 头条：mpvue === tt, mpvuePlatform === 'tt'
-     * 百度：mpvue === swan, mpvuePlatform === 'swan'
-     * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
-     */
+  import {
+    SendCode
+  } from './services/index.js'
 
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync({
-        key: 'logs',
-        data: logs
-      })
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync('logs', logs)
+  export default {
+    created() {
+      // 调用API从本地缓存中获取数据
+      /*
+       * 平台 api 差异的处理方式:  api 方法统一挂载到 mpvue 名称空间, 平台判断通过 mpvuePlatform 特征字符串
+       * 微信：mpvue === wx, mpvuePlatform === 'wx'
+       * 头条：mpvue === tt, mpvuePlatform === 'tt'
+       * 百度：mpvue === swan, mpvuePlatform === 'swan'
+       * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
+       */
+
+      let logs
+      if (mpvuePlatform === 'my') {
+        logs = mpvue.getStorageSync({
+          key: 'logs'
+        }).data || []
+        logs.unshift(Date.now())
+        mpvue.setStorageSync({
+          key: 'logs',
+          data: logs
+        })
+      } else {
+        logs = mpvue.getStorageSync('logs') || []
+        logs.unshift(Date.now())
+        mpvue.setStorageSync('logs', logs)
+      }
+    },
+    log() {
+      console.log(`log at:${Date.now()}`)
+    },
+    mounted() {
+      // 隐藏微信自带tabbar
+      mpvue.hideTabBar()
+      this.login()
+    },
+    // 点击tab
+    onTabItemTap(option) {
+      console.log(777)
+      console.log(option)
+    },
+    methods: {
+      async login() {
+        // 登录流程
+        let code = ''
+        let sessionKey = ''
+
+        await forLogin()
+        await forSessionKey()
+
+        // 获取code
+        function forLogin() {
+          return new Promise((resolve) => {
+            mpvue.login({
+              success(res) {
+                code = res.code
+                resolve()
+              }
+            })
+          })
+        }
+        // 授权，同时换取sessionKey
+        function forSessionKey() {
+          return new Promise((resolve) => {
+            new SendCode({
+              method: 'POST',
+              body: {
+                code
+              }
+            }).send().then((data) => {
+              sessionKey = data.sessionKey
+              mpvue.setStorageSync('sessionKey', sessionKey)
+              resolve()
+            })
+          })
+        }
+        // 获取用户信息
+        function forUserInfo() {}
+        // 将用户信息发送后台
+        function forCheck() {}
+      }
     }
-  },
-  log () {
-    console.log(`log at:${Date.now()}`)
   }
-}
+
 </script>
 
 <style>
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
-/* this rule will be remove */
-* {
-  transition: width 2s;
-  -moz-transition: width 2s;
-  -webkit-transition: width 2s;
-  -o-transition: width 2s;
-}
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+  }
+
+  /* this rule will be remove */
+  * {
+    transition: width 2s;
+    -moz-transition: width 2s;
+    -webkit-transition: width 2s;
+    -o-transition: width 2s;
+  }
+
 </style>

@@ -1,0 +1,54 @@
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+
+.map-footer {
+  position: fixed;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  height: 120px;
+  width: 60px;
+
+  .item {
+    display: block;
+    height: 1rem;
+    line-height: 1rem;
+    width: 1rem;
+    border-radius: .5rem;
+    border: 1px solid #999;
+    text-align: center;
+    background: rgba(255, 255, 255, .8);
+    color: #999;
+    font-size: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
+
+}
+
+.site-ul {
+  padding: 0.2rem 0;
+}
+
+.site-li {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 0.2rem;
+}
+
+.site-name {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.28rem;
+  margin-bottom: 0.1rem;
+}
+
+.site-p {
+  color: #999;
+  font-size: 0.22rem;
+}
+
+.distance {
+  color: #999;
+  font-size: 0.2rem;
+  color: red;
+}
