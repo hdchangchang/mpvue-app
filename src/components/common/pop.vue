@@ -7,7 +7,7 @@
         <h6>{{title}}</h6>
       </div>
       <div class="pop-main">
-        <slot></slot>
+        <slot ref="popMain"></slot>
       </div>
     </div>
   </div>

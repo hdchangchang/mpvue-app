@@ -1,6 +1,7 @@
 <template>
   <div>
-    order
+    55
+    <tab-bar :activeIndex="2"></tab-bar>
   </div>
 </template>
 

@@ -82,16 +82,6 @@ export class AskforGoodsDetail extends AskforRequest {
 }
 
 /**
- * 获取购物车数据
- */
-export class AskforCartList extends AskforRequest {
-  constructor(option) {
-    super(option)
-    this.url = baseUrl + 'cart/list'
-  }
-}
-
-/**
  * 获取验证码
  */
 export class AskforYzm extends AskforRequest {
@@ -119,5 +109,25 @@ export class AskforAddCart extends AskforRequest {
   constructor(option) {
     super(option)
     this.url = baseUrl + 'cart/add'
+  }
+}
+
+/**
+ * 获取购物车数据
+ */
+export class AskforCartList extends AskforRequest {
+  constructor(option) {
+    super(option)
+    this.url = baseUrl + 'cart/list'
+  }
+}
+
+/**
+ * 获取待取餐数量
+ */
+export class AskforTakeSum extends AskforRequest {
+  constructor(option) {
+    super(option)
+    this.url = baseUrl + 'customer/takeSum'
   }
 }

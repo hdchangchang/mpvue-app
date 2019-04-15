@@ -62,9 +62,9 @@
             <div class="goods-opera">
               <template v-if="item.count!=0">
                 <span class="i-box">
-                  <i class="i-add-cart"></i>
+                  <i class="i-add-cart" @click="addCart(item)"></i>
                 </span>
-                <span class="goods-buy">立即购买</span>
+                <span class="goods-buy" @click="buy">立即购买</span>
               </template>
               <template v-else>
                 <span class="goods-buy disable">已售罄</span>
@@ -79,13 +79,19 @@
       </div>
       <div class="space"></div>
     </div>
+
     <!-- tabbar -->
-    <tabBar></tabBar>
+    <tab-bar ref="tabBar" :activeIndex="0" @testLogin="testLogin"></tab-bar>
+
+    <!-- login -->
+    <pop popName="popLogin">
+      <login></login>
+    </pop>
+
   </div>
 </template>
 
 <script src="./index.js"></script>
 <style scoped lang="scss" scoped>
-  @import './index.scss'
-
+  @import './index.scss';
 </style>

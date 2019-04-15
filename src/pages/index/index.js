@@ -1,7 +1,8 @@
 import {
   AskforBannerList,
   AskforPlanList,
-  AskforGoodsList
+  AskforGoodsList,
+  AskforAddCart
 } from '@/services/index.js'
 
 import store from '@/store/index.js'
@@ -9,8 +10,11 @@ import { linkTo } from '@/utils/index.js'
 
 import tabBar from '@/components/tabBar.vue'
 
+import pop from '@/components/common/pop.vue'
+import login from '@/components/login.vue'
+
 export default {
-  components: { tabBar },
+  components: { tabBar, pop, login },
   store,
   data() {
     return {
@@ -58,6 +62,46 @@ export default {
     }
   },
   methods: {
+    // 验证是否需要登录
+    testLogin() {
+      console.log(777)
+      const token = mpvue.getStorageSync('token')
+      if (!token) {
+        this.$bus.emit('showPop', { popName: 'popLogin' })
+        return false
+      }
+    },
+    buy() {
+      this.testLogin()
+    },
+    // +
+    addCart(item) {
+      this.testLogin()
+      const vmId = mpvue.getStorageSync('siteId')
+      const token = mpvue.getStorageSync('token')
+      const customerId = mpvue.getStorageSync('customerId')
+      const { id, goodsId, goodsName, goodsSmall, goodsMoney, prePrice, sellTime, sellTimeStr, planDate } = item
+      new AskforAddCart({
+        method: 'POST',
+        body: {
+          token,
+          vmId,
+          customerId,
+          id,
+          goodsId,
+          goodsName,
+          goodsSmall,
+          goodsMoney,
+          prePrice,
+          sellTime,
+          sellTimeStr,
+          planDate,
+          count: 1 // 添加数量
+        }
+      }).send().then((res) => {
+        this.$refs.tabBar.cartNum = res
+      })
+    },
     toGoodsDetail(goodsId) {
       linkTo('/pages/goodsDetail/main?goodsId=' + goodsId)
     },

@@ -33,9 +33,11 @@
     log() {
       console.log(`log at:${Date.now()}`)
     },
-    mounted() {
+    onShow() {
       // 隐藏微信自带tabbar
       mpvue.hideTabBar()
+    },
+    mounted() {
       this.login()
     },
     // 点击tab

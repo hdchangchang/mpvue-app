@@ -7,10 +7,19 @@
 </template>
 <script>
 export default {
-  props: ['max', 'num'],
+  props: {
+    max: Number,
+    min: {
+      type: Number,
+      default: 1
+    },
+    num: {
+      type: Number,
+      default: 1
+    }
+  },
   data() {
     return {
-      min: 1
     }
   },
   watch: {
