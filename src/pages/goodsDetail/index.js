@@ -45,10 +45,6 @@ export default {
   computed: {},
   watch: {},
   methods: {
-    // 点击 + -
-    changeNum(v) {
-      this.num = v
-    },
     init() {
       this.goodsId = this.$root.$mp.query.goodsId // onLoad之后能获得此参数
       const token = mpvue.getStorageSync('token')

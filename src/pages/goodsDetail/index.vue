@@ -25,7 +25,7 @@
           </span>
         </div>
         <div class="addcount">
-          <iNumber :max="count" :num.sync="num" @changeNum="changeNum"></iNumber>
+          <iNumber :max="count" v-model="num"></iNumber>
         </div>
       </div>
       <div class="goods-detail">{{goodsDetails}}</div>

@@ -113,6 +113,16 @@ export class AskforAddCart extends AskforRequest {
 }
 
 /**
+ * 改变购物车
+ */
+export class AskforSumCart extends AskforRequest {
+  constructor(option) {
+    super(option)
+    this.url = baseUrl + 'cart/sum'
+  }
+}
+
+/**
  * 获取购物车数据
  */
 export class AskforCartList extends AskforRequest {

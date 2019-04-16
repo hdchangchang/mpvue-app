@@ -1,12 +1,16 @@
 <template>
   <div class="box">
     <span class="i-minus" @click="minus"></span>
-    <span class="num">{{num}}</span>
+    <input class="num" :value="num"/>
     <span class="i-add" @click="add"></span>
   </div>
 </template>
 <script>
 export default {
+  model: {
+    prop: 'num',
+    event: 'change' // 默认是input
+  },
   props: {
     max: Number,
     min: {
@@ -20,21 +24,21 @@ export default {
   },
   data() {
     return {
-    }
-  },
-  watch: {
-    num(v) {
-      this.$emit('changeNum', v)
+      showNum: this.num
     }
   },
   methods: {
     add() {
-      this.num++
-      this.num = this.num > this.max ? this.max : this.num
+      this.showNum++
+      this.showNum = this.showNum > this.max ? this.max : this.showNum
+      this.$emit('change', this.showNum)
+      this.$emit('changeHandle') // 点击时候做的其它处理
     },
     minus() {
-      this.num--
-      this.num = this.num < this.min ? this.min : this.num
+      this.showNum--
+      this.showNum = this.showNum < this.min ? this.min : this.showNum
+      this.$emit('change', this.showNum)
+      this.$emit('changeHandle')
     }
   }
 }
@@ -50,6 +54,9 @@ export default {
   .num{
     font-size: 0.6em;
     color: #999;
+    border:0;
+    text-align: center;
+    width:.5rem;
   }
 }
 
