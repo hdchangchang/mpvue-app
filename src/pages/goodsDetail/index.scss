@@ -20,12 +20,13 @@
 }
 .goods-img{
   width:100%;
+  border-radius: .2rem;
+  margin-bottom: 0.2rem;
 }
 .goods-tit{
   display:flex;
   justify-content: space-between;
   font-size: .32rem;
-  padding:.2rem 0;
   h6{
     flex:1;
   }
@@ -36,7 +37,7 @@
   color:#999;
 }
 .goods-labelbox{
-  margin-bottom: 0.24rem;
+  margin-bottom: 0.1rem;
 }
 
 .goods-opera{
@@ -110,12 +111,16 @@
   width: .8rem;
   font-size: 0.32rem;
   span{
-    margin-right: -0.1rem;
+    width: 0.6em;
+    height: 1em;
+    background-size: auto 100%;
   }
 }
 
 .price-box{
-  margin-bottom: 0.2rem;
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
   .price{
     font-size: 0.4rem;
     color: #ff6900;
@@ -126,11 +131,7 @@
     text-decoration: line-through;
   }
 }
-  
-.price-box{
-  display:flex;
-  justify-content: space-between;
-}
+
 
 .addcount{
   font-size: 0.5rem;

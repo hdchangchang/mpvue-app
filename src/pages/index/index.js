@@ -64,7 +64,6 @@ export default {
   methods: {
     // 验证是否需要登录
     testLogin() {
-      console.log(777)
       const token = mpvue.getStorageSync('token')
       if (!token) {
         this.$bus.emit('showPop', { popName: 'popLogin' })

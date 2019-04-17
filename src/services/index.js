@@ -141,3 +141,37 @@ export class AskforTakeSum extends AskforRequest {
     this.url = baseUrl + 'customer/takeSum'
   }
 }
+
+/**
+ * 获取订单
+ */
+export class AskforOrderList extends AskforRequest {
+  constructor(option) {
+    super(option)
+    this.url = baseUrl + 'order/list'
+  }
+}
+
+/**
+ * 获取用户信息
+ */
+
+export class AskforUserInfo extends AskforRequest {
+  constructor(option) {
+    super(option)
+    this.url = baseUrl + 'customer/index'
+  }
+}
+
+/**
+ * 获取订单详情
+ */
+export class AskforOrderDetail extends AskforRequest {
+  constructor(option) {
+    super(Object.assign({
+      header: { 'content-type': 'application/json;charset=UTF-8' },
+      method: 'POST'
+    }, option))
+    this.url = baseUrl + 'order/takeDetail'
+  }
+}

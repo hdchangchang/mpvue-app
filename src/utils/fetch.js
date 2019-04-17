@@ -5,11 +5,16 @@
  * @param {*} options
  */
 const fetch = function(url, options = {}) {
-  const { method = 'GET', body = {}, showError = true } = options
+  const {
+    header = { 'content-type': 'application/x-www-form-urlencoded' },
+    method = 'GET',
+    body = {},
+    showError = true
+  } = options
 
   return new Promise((resolve, reject) => {
     mpvue.request({
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header,
       method,
       url,
       data: body,

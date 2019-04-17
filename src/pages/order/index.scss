@@ -2,184 +2,81 @@
 @import '../../static/css/common.scss';
 @import '../../static/css/svg.scss';
 
-.mainpage{
-  height: 100%;
-  background: #f5f5f5;
-}
-.page-header {
+.order-tab{
   display: flex;
   align-items: center;
-  height: .8rem;
-  font-size: .3rem;
-  padding: 0 1em;
-  color: #666;
-}
+  
+  border-bottom:1px solid #e1e1e1;
+  span{
+    display: inline-block;
+    line-height: .8rem;
+    flex:1;
+    font-size: 0.3rem;
+    text-align: center;
+    color: #999;
+    background: #fff;
+    &.active{
+      border-bottom:1px solid #ff6900;
+      margin-bottom:-1px;
+      color: #ff6900;
+      span{
+        color: #ff6900;
 
-.ibox {
-  font-size: .4rem;
-  margin-right: .5em;
+      }
+    }
+  }
 }
-
-.site-name {
-  @include ellipsis;
-  margin-right: 10px;
+.order-item-main{
+  padding:0 .3rem;
+  font-size: 0.24rem;
+  
 }
-
-.banner-box {
-  height: 3.4rem;
-  margin:0 .3rem;
+.order-list{
+  margin: .3rem;
+}
+.order-item{
   border-radius: .2rem;
+  background: #fff;
+  
+  margin-bottom: 0.3rem;
+  box-shadow: 0px 3px 10px #e1e1e1;
   overflow: hidden;
 }
-
-.banner-swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.banner-img {
-  width: 100%;
-  height: 100%;
-}
-
-
-.plan-box {
+.order-item-top,.order-item-footer{
+  line-height: 0.8rem;
   display: flex;
   justify-content: space-between;
-  padding:0 .56rem;
-  font-size: 0.22rem;
-  padding-top: .2rem;
-  .plan-week{
-    font-size: 0.24rem;
-    margin-bottom: 0.08rem;
-    font-weight: bold;
-  }
-  .plan-day{
-    font-size: 0.18rem;
-    color:#b3b3b3;
-  }
-  .plan-itm {
-    width: 1.1rem;
-    text-align: center;
-    border-radius:.6rem .6rem 0 0;
-    padding:.3rem 0 .15rem 0;
-    
-  }
-  .plan-itm.active{
-    background:#fff;
-  }
-
-  .active .plan-week, .active .plan-day{
-    color:#ff6900!important;
-  }
-
-}
-.goods-list{
-  background: #fff;
-  padding: 0.01rem 0;
-  margin:0 .3rem;
-  border-radius: .2rem;
-}
-.goods-itm {
-  position: relative;
-  height: 2rem;
+  font-size: 0.24rem;
+  color: #999;
   padding:0 .3rem;
-  margin:.3rem 0;
+  .num{
+    color: #ff6900;
+    font-size: 0.3rem;
+  }
 }
-
-.goods-img {
-  position: absolute;
-  width: 2rem;
-  height: 2rem;
-  border-radius: .2rem;
-  background: #f5f5f5;
-  overflow: hidden;
-  .img{
-    width: 100%;
-    height: 100%;
+.order-site{
+  span{
+    margin-right: 0.1rem;
   }
 }
 
-.goods-info {
-  display: flex;
-  height: 100%;
+.order-itm{
+  display:flex;
+  margin: 0.2rem 0;
+  color: #333;
+}
+.order-info{
+  display:flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 2.15rem;
 }
-
-.goods-opera{
-  position: absolute;
-  right: .3rem;
-  bottom: 0rem;
-  .i-box{
-    display: inline-block;
-    font-size: 0.5rem;
-    vertical-align: middle;
-    margin-right: 0.2rem;
-  }
-  .goods-buy{
-    display: inline-block;
-    color:#fff;
-    font-size: 0.22rem;
-    background: #FF9750;
-    height: 0.52rem;
-    line-height: .52rem;
-    padding:0 .24rem;
-    border-radius: .26rem;
-  }
+.order-img{
+  width: 1rem;
+  height: 1rem;
+  border-radius: .1rem;
+  margin-right: 0.2rem;
 }
-
-.goods-tit {
-  max-height: 0.7rem;
-  font-size: 0.28rem;
-  margin-bottom: 0.05rem;
+.goods-tit{
+  font-size: 0.24rem;
   font-weight: bold;
-  color: #555;
-  overflow: hidden;
-}
-
-.goods-tit-in{
-  .i-new{
-    display: inline-block;
-    vertical-align: top;
-    font-size: 0.34rem;   
-    margin-right: 0.05rem; 
-  }
-}
-
-.goods-desc {
-  font-size: 0.22rem;
-  color: #999;
-  margin-bottom: 0.1rem;
-  color:#b3b3b3;
-  @include ellipsis;
-}
-
-.goods-labels{
-  display:flex;
-}
-
-.new-price{
-  font-size: .35rem;
-  margin-right: 0.1rem;
-}
-.old-price{
-  font-size: 0.2rem;
-  color: #b5b5b5;
-  text-decoration: line-through;
-}
-.nofood{
-  padding:1rem 0;
-  img{
-    display: block;
-    width: 35%;
-    margin:auto;
-    margin-bottom: 0.3rem;
-  }
-  .txt{
-    text-align: center;
-    font-size: 0.22rem;
-    color: #b3b3b3;
-  }
 }

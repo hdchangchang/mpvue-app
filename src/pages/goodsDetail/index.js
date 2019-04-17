@@ -49,7 +49,6 @@ export default {
       this.goodsId = this.$root.$mp.query.goodsId // onLoad之后能获得此参数
       const token = mpvue.getStorageSync('token')
       this.getDetail()
-      console.log(token)
       if (token) {
         this.getCartList()
       }
@@ -136,7 +135,6 @@ export default {
         customerId,
         token
       }}).send().then((res) => {
-        console.log(res)
         this.cartTotalNum = res.totalNum
       })
     },

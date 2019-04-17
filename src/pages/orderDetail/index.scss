@@ -1,0 +1,60 @@
+@import '../../static/css/mixin.scss';
+@import '../../static/css/common.scss';
+@import '../../static/css/svg.scss';
+
+.order-top{
+  background: #da7171;
+  font-size: 0.28rem;
+  color: #f7d9d9;
+  padding:.3rem;
+  p{
+    margin: .2rem 0;
+  }
+}
+
+.order-module{
+  background: #fff;
+  padding: .3rem;
+  margin:.3rem;
+  font-size: 0.24rem;
+  line-height: 0.5rem;
+  color: #666;
+  border-radius: .2rem;
+  box-shadow: 0 3px 10px #e1e1e1;
+}
+.order-time{
+  line-height: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+.order-goods{
+  display:flex;
+  font-size: 0.24rem;
+  line-height: 0.34rem;
+  margin-bottom: 0.3rem;
+  image{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: .1rem;
+    overflow: hidden;
+    margin-right: 0.2rem;
+  }
+}
+
+.goods-info-box{
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.goods-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.goods-nm{
+  width: 60%;
+  
+  height: 0.7rem;
+  overflow: hidden;
+}
