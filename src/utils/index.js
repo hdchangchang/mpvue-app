@@ -1,3 +1,5 @@
+import CryptoJS from 'crypto-js/crypto-js'
+
 export const formatNumber = function(n) {
   const str = n.toString()
   return str[1] ? str : `0${str}`
@@ -37,4 +39,13 @@ export const getQuery = function() {
   const currentPage = pages[pages.length - 1]
   const options = currentPage.options
   return options
+}
+
+export const encryptByDES = function(message, key) {
+  var keyHex = CryptoJS.enc.Utf8.parse(key)
+  var encrypted = CryptoJS.DES.encrypt(message, keyHex, {
+    mode: CryptoJS.mode.ECB,
+    padding: CryptoJS.pad.Pkcs7
+  })
+  return encrypted.toString()
 }

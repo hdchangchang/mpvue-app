@@ -24,6 +24,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "mpvue": "^2.0.0",
     "vuex": "^3.0.1"
   },

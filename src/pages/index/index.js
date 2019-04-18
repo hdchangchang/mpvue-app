@@ -2,11 +2,12 @@ import {
   AskforBannerList,
   AskforPlanList,
   AskforGoodsList,
-  AskforAddCart
+  AskforAddCart,
+  AskforCustomerVl
 } from '@/services/index.js'
 
 import store from '@/store/index.js'
-import { linkTo } from '@/utils/index.js'
+import { linkTo, encryptByDES } from '@/utils/index.js'
 
 import tabBar from '@/components/tabBar.vue'
 
@@ -70,8 +71,30 @@ export default {
         return false
       }
     },
-    buy() {
-      this.testLogin()
+    buy(item) {
+      const customerId = mpvue.getStorageSync('customerId')
+      const token = mpvue.getStorageSync('token')
+      const goodslist = [{
+        id: item.id,
+        sellTime: item.sellTime,
+        count: 1
+      }]
+      new AskforCustomerVl({
+        body: {
+          customerId,
+          token
+        }
+      }).send().then((res) => {
+        // 校验登录成功
+        var goodsListString = JSON.stringify(goodslist)
+        var order_des = encryptByDES(goodsListString, token)
+        mpvue.setStorageSync('order_des', order_des)
+
+        linkTo('/pages/orderSure/main')
+      }, (res) => {
+        // 登录
+        this.$bus.emit('showPop', { popName: 'popLogin' })
+      })
     },
     // +
     addCart(item) {

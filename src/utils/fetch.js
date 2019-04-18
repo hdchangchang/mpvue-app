@@ -8,8 +8,7 @@ const fetch = function(url, options = {}) {
   const {
     header = { 'content-type': 'application/x-www-form-urlencoded' },
     method = 'GET',
-    body = {},
-    showError = true
+    body = {}
   } = options
 
   return new Promise((resolve, reject) => {
@@ -19,15 +18,11 @@ const fetch = function(url, options = {}) {
       url,
       data: body,
       success: res => {
-        if (showError) {
-          if (res.statusCode < 200 || res.statusCode > 300) {
-            return reject(res.data || {})
-          }
-          if (Number(res.data.result) !== 200) {
-            return reject(res.data || {})
-          }
+        if (Number(res.data.result) !== 200) {
+          reject(res.data || {})
+          return false
         }
-        return resolve(res.data || {})
+        resolve(res.data || {})
       },
       complete: res => {
         // TODO:

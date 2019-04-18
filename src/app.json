@@ -6,7 +6,8 @@
     "pages/order/main",
     "pages/mine/main",
     "pages/goodsDetail/main",
-    "pages/orderDetail/main"
+    "pages/orderDetail/main",
+    "pages/orderSure/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

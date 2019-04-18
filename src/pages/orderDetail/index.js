@@ -18,6 +18,21 @@ export default {
       orderStatus: ''
     }
   },
+  computed: {
+    formatDate() {
+      const now = new Date()
+      const y = now.getFullYear()
+      let m = now.getMonth()
+      let d = now.getDate()
+
+      m = '' + m
+      m.length < 2 ? '0' + m : m
+      d = '' + d
+      d.length < 2 ? '0' + d : d
+
+      return y + m + d
+    }
+  },
   onShow() {
     this.orderId = this.$root.$mp.query.orderId
     this.getOrderDetail()

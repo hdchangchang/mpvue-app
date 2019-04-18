@@ -17,7 +17,7 @@ class AskforRequest {
       fetch(this.url, this.options).then((res) => {
         resolve(res.data)
       }, (err) => {
-        console.log(err)
+        reject(err)
       })
     })
   }
@@ -173,5 +173,42 @@ export class AskforOrderDetail extends AskforRequest {
       method: 'POST'
     }, option))
     this.url = baseUrl + 'order/takeDetail'
+  }
+}
+
+/**
+ * 验证用户登录信息
+ */
+export class AskforCustomerVl extends AskforRequest {
+  constructor(option) {
+    super(Object.assign({
+      method: 'POST'
+    }, option))
+    this.url = baseUrl + 'customer/vl'
+  }
+}
+
+/**
+ * 获取下单信息
+ */
+export class AskforOrderVc extends AskforRequest {
+  constructor(option) {
+    super(Object.assign({
+      method: 'POST'
+    }, option))
+    this.url = baseUrl + 'order/vc'
+  }
+}
+
+/**
+ * 立即下单
+ */
+
+export class AskforOrderCo extends AskforRequest {
+  constructor(option) {
+    super(Object.assign({
+      method: 'POST'
+    }, option))
+    this.url = baseUrl + 'order/co'
   }
 }

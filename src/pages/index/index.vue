@@ -64,7 +64,7 @@
                 <span class="i-box">
                   <i class="i-add-cart" @click="addCart(item)"></i>
                 </span>
-                <span class="goods-buy" @click="buy">立即购买</span>
+                <span class="goods-buy" @click="buy(item)">立即购买</span>
               </template>
               <template v-else>
                 <span class="goods-buy disable">已售罄</span>
