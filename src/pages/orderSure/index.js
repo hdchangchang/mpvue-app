@@ -12,13 +12,16 @@ export default {
       siteName: mpvue.getStorageSync('siteName'),
       orderList: [],
       payChannel: [],
+      cardId: '',
       card: '',
       cardAmount: 0,
+      disId: '',
       defaultDis: '',
       discountAmount: 0,
       preAmount: 0,
       promotionAmount: 0,
-      orderSum: 0
+      orderSum: 0,
+      channelType: 1 // 支付方式
     }
   },
   computed: {
@@ -58,12 +61,22 @@ export default {
       })
     },
     pay() {
+      const token = mpvue.getStorageSync('token')
+      const customerId = mpvue.getStorageSync('customerId')
+      const siteId = mpvue.getStorageSync('siteId')
+      const goodsList = mpvue.getStorageSync('order_des')
+      const disId = this.disId
+      const cardId = this.cardId
+      const channelType = this.channelType
       new AskforOrderCo({
         body: {
-          token, customerId, siteId, disId, channelType, goodsList
+          token, customerId, siteId, disId, cardId, channelType, goodsList
         }
       }).send().then((res) => {
-        console.log(res)
+        const orderId = res.orderId
+        linkTo('/pages/onlinePayment/main?orderId=' + orderId + '&channelType=' + this.channelType)
+      }, (err) => {
+        console.log(err)
       })
     }
   }

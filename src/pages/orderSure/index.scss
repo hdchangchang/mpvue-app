@@ -71,6 +71,20 @@
 .yh{
   display: flex;
   justify-content: space-between;
+  line-height: .8rem;
+  background: #f5f5f5;
+  margin:.2rem 0;
+  padding:0 .2rem;
+  &.active{
+    color: #ff6900;
+  }
+  span{
+    display:flex;
+    align-items: center;
+  }
+  .i-right{
+    font-size: 0.36rem;
+  }
 }
 .tj{
   text-align: right;

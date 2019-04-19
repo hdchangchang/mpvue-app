@@ -21,12 +21,14 @@
       </div>
     </div>
     <div class="order-module">
-      <p class="yh">
-        <span>{{card==''?'未使用构餐卡':card}}</span>
+      <div class="module-tit">使用优惠</div>
+
+      <p class="yh" :class="[cardAmount>0?'active':'']">
+        <span>{{card==''?'未使用构餐卡':card}} <span class="i-right"></span> </span>
         <span>-¥ {{cardAmount}}</span>
       </p>
-      <p class="yh">
-        <span>{{defaultDis==''?'未使用优惠券':defaultDis}}</span>
+      <p class="yh" :class="[discountAmount>0?'active':'']">
+        <span>{{defaultDis==''?'未使用优惠券':defaultDis}} <span class="i-right"></span> </span>
         <span>-¥ {{discountAmount}}</span>
       </p>
     </div>
@@ -36,13 +38,15 @@
     <div class="order-module">
       <div class="module-tit">支付方式</div>
       <div class="pay-list">
-        <div class="pay-item">
+        <div class="pay-item" @click="channelType=1">
           <span>余额支付</span>
-          <span class="i-check"></span>
+          <span class="i-check" v-if="channelType==1"></span>
+          <span class="i-check-no" v-else></span>
         </div>
-        <div class="pay-item">
+        <div class="pay-item" @click="channelType=2">
           <span>微信支付</span>
-          <span  class="i-check-no"></span>
+          <span  class="i-check" v-if="channelType==2"></span>
+          <span  class="i-check-no" v-else></span>
         </div>
       </div>
     </div>

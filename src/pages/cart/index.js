@@ -1,11 +1,18 @@
 import {
   AskforCartList,
-  AskforSumCart
+  AskforSumCart,
+  AskforCustomerVl
 } from '@/services/index.js'
+
+import {
+  linkTo,
+  encryptByDES
+} from '@/utils/index.js'
 
 import store from '@/store/index.js'
 import tabBar from '@/components/tabBar.vue'
 import iNumber from '@/components/common/iNumber.vue'
+
 
 export default {
   store,
@@ -15,7 +22,12 @@ export default {
   },
   data() {
     return {
-      ce: { data: 1, list: [{ data: 1 }] },
+      ce: {
+        data: 1,
+        list: [{
+          data: 1
+        }]
+      },
       siteName: '',
       goods: [], // 购物车列表
       checkAll: true, // 是否全选
@@ -164,6 +176,40 @@ export default {
           })
         })
         this.goods = goods
+      })
+    },
+    buy() {
+      const customerId = mpvue.getStorageSync('customerId')
+      const token = mpvue.getStorageSync('token')
+      const goodslist = []
+
+      this.goods.forEach((item, index) => {
+        item.goods.forEach((itm, idx) => {
+          goodslist.push({
+            id: itm.id,
+            sellTime: itm.sellTime,
+            count: itm.count
+          })
+        })
+      })
+
+      new AskforCustomerVl({
+        body: {
+          customerId,
+          token
+        }
+      }).send().then((res) => {
+        // 校验登录成功
+        var goodsListString = JSON.stringify(goodslist)
+        var order_des = encryptByDES(goodsListString, token)
+        mpvue.setStorageSync('order_des', order_des)
+
+        linkTo('/pages/orderSure/main')
+      }, (res) => {
+        // 登录
+        this.$bus.emit('showPop', {
+          popName: 'popLogin'
+        })
       })
     }
   }

@@ -1,0 +1,64 @@
+@import '../../static/css/mixin.scss';
+@import '../../static/css/common.scss';
+@import '../../static/css/svg.scss';
+
+.mainpage{
+  padding-top:.3rem;
+}
+
+.order-info {
+  font-size: 0.24rem;
+  line-height: .8rem;
+  background: #fff;
+  border-radius: .2rem;
+  box-shadow: 0 3px 10px #e1e1e1;
+  margin:0 .3rem;
+  padding: .3rem;
+  color: #666;
+}
+
+.countDown,.num{
+  font-size: 0.4rem;
+  color: #ff6900;
+}
+
+.pay-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  vertical-align: middle;
+
+  .i-right {
+    font-size: 0.4rem;
+  }
+}
+.pay-ts{
+  font-size: 0.34rem;
+  font-weight: bold;
+}
+
+.pay-type {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.pay-btn {
+  display: block;
+  width: 2.6rem;
+  height: 2.6rem;
+  line-height: 2.6rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0.3rem;
+  border-radius: 50%;
+}
+
+.pay-wx {
+  background: rgb(91, 175, 118);
+}
+
+.pay-ye {
+  background: rgb(223, 146, 101);
+
+}

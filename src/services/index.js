@@ -212,3 +212,28 @@ export class AskforOrderCo extends AskforRequest {
     this.url = baseUrl + 'order/co'
   }
 }
+
+/**
+ * payingInfo
+ */
+
+export class AskforPayingInfo extends AskforRequest {
+  constructor(option) {
+    super(Object.assign({
+      method: 'POST'
+    }, option))
+    this.url = baseUrl + 'order/payingInfo'
+  }
+}
+
+/**
+ * 余额支付
+ */
+export class AskforOrderBp extends AskforRequest {
+  constructor(option) {
+    super(Object.assign({
+      method: 'POST'
+    }, option))
+    this.url = baseUrl + 'order/bp'
+  }
+}

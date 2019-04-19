@@ -51,7 +51,7 @@
           <p>合计 <span class="num">¥{{totalPrice}}</span></p>
           <p>已减免 ¥{{totalReduce}}</p>
         </div>
-        <div class="account-btn">去结算</div>
+        <div class="account-btn" @click='buy'>去结算</div>
       </div>
     </div>
     <!-- tabbar -->

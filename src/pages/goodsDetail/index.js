@@ -7,10 +7,14 @@ import iNumber from '@/components/common/iNumber.vue'
 import {
   AskforGoodsDetail,
   AskforCartList,
-  AskforAddCart
+  AskforAddCart,
+  AskforCustomerVl
 } from '@/services/index.js'
 
-import { linkTo } from '@/utils/index.js'
+import {
+  linkTo,
+  encryptByDES
+} from '@/utils/index.js'
 
 export default {
   components: { pop, login, iNumber },
@@ -171,10 +175,31 @@ export default {
       })
     },
     buy() {
+      const customerId = mpvue.getStorageSync('customerId')
       const token = mpvue.getStorageSync('token')
-      if (!token) {
-        this.$bus.emit('showPop', { popName: 'popLogin' })
-      }
+      const goodslist = [{
+        id: this.id,
+        sellTime: this.sellTime,
+        count: 1
+      }]
+      new AskforCustomerVl({
+        body: {
+          customerId,
+          token
+        }
+      }).send().then((res) => {
+        // 校验登录成功
+        var goodsListString = JSON.stringify(goodslist)
+        var order_des = encryptByDES(goodsListString, token)
+        mpvue.setStorageSync('order_des', order_des)
+
+        linkTo('/pages/orderSure/main')
+      }, (res) => {
+        // 登录
+        this.$bus.emit('showPop', {
+          popName: 'popLogin'
+        })
+      })
     }
   }
 }

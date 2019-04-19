@@ -7,6 +7,7 @@
     "pages/mine/main",
     "pages/goodsDetail/main",
     "pages/orderDetail/main",
+    "pages/onlinePayment/main",
     "pages/orderSure/main"
   ],
   "window": {
